@@ -23,7 +23,8 @@ function App() {
 
     
   );
+ 
 }
-  <footer>Open Source code by Melany Perez</footer>
+  
 
 export default App;

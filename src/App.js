@@ -5,21 +5,22 @@ import "bootstrap/dist/css/bootstrap.css";
 import Search from './search';
 
 
-function App() {
+export default function App() {
   return (
     <div className="App">
+      <div className='container'>
       <header className="App-header">
       
         <h1 id="mainCity">
          Weather Search
         </h1>
       
-      <Search />
+      <Search mainCity="New York"/>
       
     
       </header>
     </div>
-    
+   </div> 
 
     
   );
@@ -27,4 +28,6 @@ function App() {
 }
   
 
-export default App;
+
+
+

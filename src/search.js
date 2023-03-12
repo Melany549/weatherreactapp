@@ -1,114 +1,99 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
-import CurrentDate from "./currentDate";
+import Currentdate from "./currentdate";
 
-export default function Search(props) {
-  const [result, setResult] = useState({ ready: false });
-  const [weather, setWeather] = useState(props.mainCity);
+export default function Search() {
+  const [city, setCity] = useState("");
+  const [result, setResult] = useState(false);
+  const [weather, setWeather] = useState({});
 
   function displayWeather(response) {
-    setResult({
-      ready: true,
-      coordinates: response.data.coordinates,
-      temperature: response.data.temperature.current,
-      humidity: response.data.temperature.humidity,
-      date: new Date(response.data.time * 1000),
-      description: response.data.condition.description,
-      icon: response.data.condition.icon_url,
+    setResult(true);
+    setWeather({
+      temperature: response.data.main.temp,
+      description: response.data.weather[0].description,
+      humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
-      city: response.data.city
+      icon: response.data.weather[0].icon,
     });
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    search();
+    let url = "";
+    if (city) {
+      url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=260693d14bfef0618d9771c4a5f5a5bb&units=metric`;
+    } else {
+      url = `https://api.openweathermap.org/data/2.5/weather?q=New%20York&appid=260693d14bfef0618d9771c4a5f5a5bb&units=metric`;
+    }
+    axios.get(url).then(displayWeather);
   }
 
   function updateCity(event) {
-    setWeather(event.target.value);
-  }
-
-  function search() {
-    const apiKey = "1b4oade44afe2b7ce1f6c19030d6t0b5";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${weather}&key=${apiKey}`;
-    axios.get(apiUrl).then(displayWeather);
+    setCity(event.target.value);
   }
 
   let form = (
     <form id="cityinput" onSubmit={handleSubmit}>
-      <input type="search" placeholder="Enter a city" onChange={updateCity} />
+      <input
+        type="search"
+        value={city}
+        placeholder="Enter a city"
+        onChange={updateCity}
+      />
       <input type="submit" value="⌕" />
     </form>
   );
 
-  if (result.ready) {
+  if (result) {
     return (
       <div className="container">
         <div className="row" id="search">
           <div className="col">
             {form}
             <div>
-              <CurrentDate />
+              <Currentdate />
             </div>
-            <h2>{result.city}</h2>
+            <h2>{city}</h2>
             <ul>
               <li>
                 <img
-                  src={result.icon}
-                  alt={result.description}
+                  src={`https://openweathermap.org/img/wn/${weather.icon}.png`}
+                  alt={weather.description}
                 />
               </li>
-              <li>Temperature: {Math.round(result.temperature)}°C</li>
-              <li>{result.description}</li>
-              <li>Humidity: {result.humidity}%</li>
-              <li>Wind: {result.wind} km/h</li>
+              <li>Temperature: {Math.round(weather.temperature)}°C</li>
+              <li>Description: {weather.description}</li>
+              <li>Humidity: {weather.humidity}%</li>
+              <li>Wind: {weather.wind} km/h</li>
             </ul>
           </div>
         </div>
         <div className="row">
-          <div className="col">
-            <ul>
-              <li>Wedesday</li>
-              <li>
-                <img
+          <div className="col"><ul><li>Wedesday</li>
+          <li><img
                   src={`https://openweathermap.org/img/wn/${weather.icon}.png`}
                   alt={weather.description}
-                />
-              </li>
-              <li>9°</li>
-            </ul>
-          </div>
-          <div className="col">
-            <ul>
-              <li>Thursday</li>
-              <li>
-                <img
+                /></li><li>9°</li></ul></div>
+          <div className="col"><ul><li>Thursday</li>
+          <li><img
                   src={`https://openweathermap.org/img/wn/${weather.icon}.png`}
                   alt={weather.description}
-                />
-              </li>
-              <li>9°</li>
-            </ul>
-          </div>
-          <div className="col">
-            <ul>
-              <li>Friday</li>
-              <li>
-                <img
+                /></li><li>9°</li></ul></div>
+          <div className="col"><ul><li>Friday</li>
+          <li><img
                   src={`https://openweathermap.org/img/wn/${weather.icon}.png`}
                   alt={weather.description}
-                />
-              </li>
-              <li>9°</li>
-            </ul>
-          </div>
+                /></li><li>9°</li></ul></div>
         </div>
       </div>
+      
+      
     );
+    
+    
   } else {
-    search();
     return form;
   }
 }

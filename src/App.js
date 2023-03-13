@@ -14,7 +14,7 @@ function App() {
          Weather Search
         </h1>
       
-      <Search />
+      <Search mainCity="New York"/>
       
     
       </header>

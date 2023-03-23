@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
 import Currentdate from "./currentdate";
+import AppForecast from "./appForecast";
+import WeatherIcon from "./weatherIcon";
 
 export default function Search(props) {
   const [result, setResult] = useState({ ready: false });
@@ -15,9 +17,9 @@ export default function Search(props) {
       humidity: response.data.temperature.humidity,
       date: new Date(response.data.time * 1000),
       description: response.data.condition.description,
-      icon: response.data.condition.icon_url,
+      icon: response.data.condition.icon,
       wind: response.data.wind.speed,
-      city: response.data.city
+      cityName: response.data.city,
     });
   }
 
@@ -28,6 +30,7 @@ export default function Search(props) {
 
   function updateCity(event) {
     setWeather(event.target.value);
+    
   }
 
   function search() {
@@ -52,59 +55,20 @@ export default function Search(props) {
             <div>
               <Currentdate />
             </div>
-            <h2>{result.city}</h2>
+            <h2 className="mainCity">{result.cityName}</h2>
             <ul>
               <li>
-                <img
-                  src={result.icon}
-                  alt={result.description}
-                />
+              <WeatherIcon code={result.icon} size={70} />
               </li>
-              <li>Temperature: {Math.round(result.temperature)}°C</li>
+              <li className="mainTemp">{Math.round(result.temperature)}°C</li>
               <li>{result.description}</li>
               <li>Humidity: {result.humidity}%</li>
               <li>Wind: {result.wind} km/h</li>
             </ul>
           </div>
         </div>
-        <div className="row">
-          <div className="col">
-            <ul>
-              <li>Wedesday</li>
-              <li>
-                <img
-                  src={`https://openweathermap.org/img/wn/${weather.icon}.png`}
-                  alt={weather.description}
-                />
-              </li>
-              <li>9°</li>
-            </ul>
-          </div>
-          <div className="col">
-            <ul>
-              <li>Thursday</li>
-              <li>
-                <img
-                  src={`https://openweathermap.org/img/wn/${weather.icon}.png`}
-                  alt={weather.description}
-                />
-              </li>
-              <li>9°</li>
-            </ul>
-          </div>
-          <div className="col">
-            <ul>
-              <li>Friday</li>
-              <li>
-                <img
-                  src={`https://openweathermap.org/img/wn/${weather.icon}.png`}
-                  alt={weather.description}
-                />
-              </li>
-              <li>9°</li>
-            </ul>
-          </div>
-        </div>
+        <AppForecast data={result} />
+       
       </div>
     );
   } else {

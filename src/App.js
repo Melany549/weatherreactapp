@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <header className="App-header">
       
-        <h1 id="mainCity">
+        <h1 className='title'>
          Weather Search
         </h1>
       

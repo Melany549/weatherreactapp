@@ -1,34 +1,50 @@
 .App {
   text-align: center;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+  font-family: 'Montserrat Alternates', sans-serif;
+
+  
 }
 
 
 .App-header {
-  background-color: #D7A761;
+  background-color: #DBCEBC;
   min-height: 80vh;
   margin: 30px;
   border-radius: 25px;
+  
  
  
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color:#86633D;
 }
-
+.mainCity{
+  color: #364A49;
+  font-weight: bold;
+  font-size: 50px;
+  font-weight: lighter;
+  padding-top: 40px;
+}
 .App-link {
   color: #61dafb;
 }
 
-
+.dayTemp{
+  font-size: 20px;
+}
 .App {
   text-align: center;
 }
 h1 {
-  font-weight: bold;
   padding-top: 40px;
 }
+.title{
+  font-size: 30px;
+  font-weight: bolder;
+ 
+}
+
 input[type="search"] {border-radius: 3px;
   border-width: 1px;
   border-radius: 10px;
@@ -38,8 +54,8 @@ input[type="search"] {border-radius: 3px;
 font-size: 25px;}
 
 input[type="submit"]{
-  border-radius: 30px;
-  margin: 20px;
+  border-radius: 20px;
+  margin: 5px;
   font-size: 20px;
   border-style: none;
   
@@ -52,3 +68,7 @@ ul {
 #search{
   font-size: 20px;
   margin: 30px;}
+
+  .mainTemp {
+     font-size: 35px;
+  }

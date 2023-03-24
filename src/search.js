@@ -4,6 +4,7 @@ import "./App.css";
 import Currentdate from "./currentdate";
 import AppForecast from "./appForecast";
 import WeatherIcon from "./weatherIcon";
+import WeatherTemperature from "./weatherTemperature";
 
 export default function Search(props) {
   const [result, setResult] = useState({ ready: false });
@@ -60,7 +61,8 @@ export default function Search(props) {
               <li>
               <WeatherIcon code={result.icon} size={70} />
               </li>
-              <li className="mainTemp">{Math.round(result.temperature)}°C</li>
+              <WeatherTemperature celsius= {result.temperature} />
+              
               <li>{result.description}</li>
               <li>Humidity: {result.humidity}%</li>
               <li>Wind: {result.wind} km/h</li>

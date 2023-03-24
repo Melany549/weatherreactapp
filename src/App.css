@@ -1,13 +1,14 @@
 .App {
   text-align: center;
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+  color: #000;
 
   
 }
 
 
 .App-header {
-  background-color: #DBCEBC;
+  background-color: #D8D6CC;
   min-height: 80vh;
   margin: 30px;
   border-radius: 25px;
@@ -17,19 +18,24 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color:#86633D;
+  color:#CBA68A;
 }
 .mainCity{
-  color: #364A49;
+  color:#BA8359;
   font-weight: bold;
   font-size: 50px;
-  font-weight: lighter;
+  font-weight: bold;
   padding-top: 40px;
 }
 .App-link {
   color: #61dafb;
 }
-
+h1.title{
+  color: #525252;
+}
+p{
+  color: #525252;
+}
 .dayTemp{
   font-size: 20px;
 }
@@ -39,12 +45,25 @@
 h1 {
   padding-top: 40px;
 }
+
+
+a.unit{
+  color: #fff;
+  font-size: small;
+}
+
 .title{
   font-size: 30px;
   font-weight: bolder;
  
 }
-
+a {
+  color: #fff;
+  text-decoration: underline;
+}
+span{
+  font-size: 20px;
+}
 input[type="search"] {border-radius: 3px;
   border-width: 1px;
   border-radius: 10px;
@@ -60,9 +79,18 @@ input[type="submit"]{
   border-style: none;
   
 }
-
+li{
+ color: #525252;
+}
+li.weekDay{
+  color: #525252;
+}
+li.dayTemp{
+  color: #525252;
+}
 ul {
   list-style-type: none;
+  
 }
 
 #search{
@@ -72,3 +100,4 @@ ul {
   .mainTemp {
      font-size: 35px;
   }
+  

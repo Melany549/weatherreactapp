@@ -8,7 +8,9 @@
 
 
 .App-header {
-  background-color: #D8D6CC;
+  background-image: url('C:\Users\melan\Downloads\beige.jpg');
+  background-size: cover;
+  background-position: center;
   min-height: 80vh;
   margin: 30px;
   border-radius: 25px;
@@ -100,4 +102,5 @@ ul {
   .mainTemp {
      font-size: 35px;
   }
+  
   

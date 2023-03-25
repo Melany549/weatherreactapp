@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
 import Currentdate from "./currentdate";
-import AppForecast from "./appForecast";
+import AppForecast from "./appForecast"
 import WeatherIcon from "./weatherIcon";
 import WeatherTemperature from "./weatherTemperature";
 
@@ -16,11 +16,10 @@ export default function Search(props) {
       coordinates: response.data.coordinates,
       temperature: response.data.temperature.current,
       humidity: response.data.temperature.humidity,
-      date: new Date(response.data.time * 1000),
       description: response.data.condition.description,
       icon: response.data.condition.icon,
       wind: response.data.wind.speed,
-      cityName: response.data.city,
+      cityName: response.data.city
     });
   }
 

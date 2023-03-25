@@ -1,11 +1,15 @@
 import axios from "axios";
-import React, { useState} from "react";
+import React, { useState, useEffect } from "react";
 import ForecastDay from "./forecastDay";
 
 
 export default function AppForecast (props) {
   let [loaded, setLoaded]= useState(false);
   let [forecast,setForecast] = useState(null);
+
+  useEffect(()=> {
+    setLoaded(false)
+  },[props.data.cityName])
 
 
   function handleSubmitForecast(response) {
@@ -42,7 +46,7 @@ export default function AppForecast (props) {
 } else { 
 
   let apiKey="1b4oade44afe2b7ce1f6c19030d6t0b5"; 
-  let apiUrl=`https://api.shecodes.io/weather/v1/forecast?query=${props.data.cityName}&key=${apiKey}`;
+  let apiUrl=`https://api.shecodes.io/weather/v1/forecast?query=${props.data.cityName}&key=${apiKey}&units=imperial`;
 
 axios.get(apiUrl).then(handleSubmitForecast);
 return null;   

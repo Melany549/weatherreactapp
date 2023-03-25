@@ -8,7 +8,7 @@
 
 
 .App-header {
-  background-image: url('C:\Users\melan\Downloads\beige.jpg');
+  background-image: url('/src/img/beige.jpg');
   background-size: cover;
   background-position: center;
   min-height: 80vh;
